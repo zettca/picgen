@@ -4,11 +4,18 @@ A simple placeholder image generator
 
 ## Usage
 
+### API
+
 ```ts
-await generate(); // generates svg
-await generate({ width: 600, color: "teal" }); // generates svg
+import { generate } from "https://deno.land/x/picgen/mod.tsx";
+
+await generate(); // generates default SVG
+await generate({ width: 600, color: "teal" }); // generates SVG with custom parameters
 ```
 
-Check out the API: [GenerateParams](/mod.tsx#5)
+### Online
 
-Deployed at https://picgen.deno.dev. Configurable via search params
+Deployed at https://picgen.deno.dev. Configurable via path/search params:
+
+- https://picgen.deno.dev/600
+- https://picgen.deno.dev/600x400?bgcolor=green&text=Hey👋
