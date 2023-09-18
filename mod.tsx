@@ -14,21 +14,19 @@ export type GenerateParams = {
   /** font family of the text content */
   font?: string;
   /** background color */
-  bgColor?: string;
+  bgcolor?: string;
 };
 
 /** Generates an SVG image for the passed params */
 export const generate = async (params: GenerateParams = {}) => {
-  const {
-    width = 200,
-    height = 200,
-    bgColor = "#ddd",
-    color = "#333",
-    text: textParam,
-    font = "sans-serif",
-  } = params;
+  const width = params.width || 200;
+  const height = params.height || width;
+  const text = params.text ?? `${width} x ${height}`;
 
-  const text = textParam ?? `${width} x ${height}`;
+  const font = params.font ?? "sans-serif";
+  const color = params.color ?? "currentColor";
+  const bgColor = params.bgcolor ?? "currentColor";
+  const bgFilter = params.bgcolor ? undefined : "invert(0.8)";
 
   return await renderToString(
     <svg
@@ -36,8 +34,9 @@ export const generate = async (params: GenerateParams = {}) => {
       width={width}
       height={height}
       viewBox={[0, 0, width, height].join(" ")}
+      style="color-scheme: light dark"
     >
-      <rect width={width} height={height} fill={bgColor} />
+      <rect width={width} height={height} fill={bgColor} filter={bgFilter} />
       <text
         fill={color}
         x={width / 2}
