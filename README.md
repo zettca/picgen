@@ -15,7 +15,7 @@ await generate({ width: 600, color: "teal" }); // generates SVG with custom para
 
 ### Online
 
-Deployed at https://picgen.deno.dev. Configurable via path/search params:
+Deployed at https://picgen.zettca.deno.net. Configurable via path/search params:
 
-- https://picgen.deno.dev/600
-- https://picgen.deno.dev/600x400?bgcolor=green&text=Hey👋
+- https://picgen.zettca.deno.net/600
+- https://picgen.zettca.deno.net/600x400?bgcolor=green&text=Hey👋
