@@ -1,0 +1,5 @@
+{
+  "name": "picgen",
+  "main": "src/app.ts",
+  "compatibility_date": "2026-11-07"
+}

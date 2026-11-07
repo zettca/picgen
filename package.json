@@ -9,12 +9,11 @@
     "node": ">=22.18"
   },
   "scripts": {
-    "dev": "node --watch src/main.ts",
-    "start": "node src/main.ts",
+    "dev": "node --watch src/server.ts",
+    "start": "node src/server.ts",
     "test": "node --test",
     "check": "tsc",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "fmt": "prettier --check ."
   },
   "dependencies": {
     "@hono/node-server": "^1.13.7",
