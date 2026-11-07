@@ -1,7 +1,8 @@
-import { Hono } from "https://deno.land/x/hono@v3.6.3/mod.ts";
-import { logger } from "https://deno.land/x/hono@v3.6.3/middleware.ts";
+import { serve } from "@hono/node-server";
+import { Hono } from "hono";
+import { logger } from "hono/logger";
 
-import { generate } from "./mod.tsx";
+import { generate } from "./picgen.ts";
 
 const safeNum = (str: string) => {
   const num = Number(str);
@@ -30,4 +31,4 @@ app.get("/*", async (ctx) => {
   return ctx.body(await generate(params));
 });
 
-Deno.serve(app.fetch);
+serve({ fetch: app.fetch, port: Number(process.env.PORT) || 8000 });

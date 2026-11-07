@@ -11,17 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
-      - uses: denoland/setup-deno@v1
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
         with:
-          deno-version: v1.x
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
 
       - name: Format 💅
-        run: deno fmt --check
-
-      - name: Lint 🔬
-        run: deno lint
+        run: pnpm format:check
 
       - name: Check 🔎
-        run: deno check mod.tsx
+        run: pnpm check
+
+      - name: Test 🧪
+        run: pnpm test
